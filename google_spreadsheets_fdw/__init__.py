@@ -30,6 +30,7 @@ def gs_date_to_pg_date(val: float) -> date:
 
 
 pg_to_gs_converters = {
+    25: lambda val: str(val) if val is not None else None,  # Text
     2950: lambda val: str(val) if val is not None else None,  # uuid
     1043: lambda val: str(val) if val is not None else None,  # varchar
     23: lambda val: int(val) if val is not None else None,  # int
@@ -38,6 +39,7 @@ pg_to_gs_converters = {
 }
 
 gs_to_pg_converters = {
+    25: lambda val: str(val) if val != '' else None,  # uuid
     2950: lambda val: str(val) if val != '' else None,  # uuid
     1043: lambda val: str(val) if val != '' else None,  # varchar
     23: lambda val: int(val) if val != '' else None,  # int
